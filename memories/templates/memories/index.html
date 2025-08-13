@@ -19,7 +19,7 @@
               <img class="w-10 h-10 rounded-full mr-4" src="/media/photos/member1.jpg">
               <div class="text-sm">
                 <p class="text-gray-900 leading-none">{{ each.sender }}</p>
-                <p class="text-gray-600">Aug 18</p>
+                <p class="text-gray-600">{{ each.published_at|date:"M j" }}</p>
               </div>
             </div>
             <div class="px-6 pt-4 pb-2">
