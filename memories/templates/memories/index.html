@@ -2,8 +2,8 @@
 
 {% block content %}
 
-    {% for photo in photos %}
-        {{ photo.sender }}
+    {% for each in photos %}
+      <img src="/media/{{ each.photo }}">
     {% endfor %}
 
 {% endblock %}
