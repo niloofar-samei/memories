@@ -3,7 +3,9 @@ from django.db import models
 
 class Photo(models.Model):
     photo = models.ImageField(upload_to="photos/")
-    sender = models.CharField(max_length=100)
+    sender = models.CharField(max_length=100, unique=True)
+    caption = models.CharField(max_length=500)
+    hashtag_list = models.CharField(max_length=500)
     published_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
