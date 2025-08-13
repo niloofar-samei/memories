@@ -3,7 +3,6 @@ from .models import Photo
 from django.views.generic import ListView
 from django.shortcuts import render, redirect
 from django.views import View
-from memories.forms import PhotoForm
 
 
 class IndexListView(ListView):
@@ -14,15 +13,16 @@ class IndexListView(ListView):
 
 class PhotoCreateView(View):
     def get(self, request):
-        return render(request, "memories/new_photo.html", {"photo_form": PhotoForm()})
+        return render(request, "memories/new_photo.html")
 
-    def post(self, request):
-        photo_form = PhotoForm(request.POST, request.FILES)
 
-        if photo_form.is_valid():
-            p = photo_form.save(commit=False)
-            p.sender = "niloofar"
-            p.save()
-            return redirect("IndexListView")
-
-        return render(request, "memories/new_photo.html", {"photo_form": PhotoForm()})
+#    def post(self, request):
+#        photo_form = PhotoForm(request.POST, request.FILES)
+#
+#        if photo_form.is_valid():
+#            p = photo_form.save(commit=False)
+#            p.sender = "niloofar"
+#            p.save()
+#            return redirect("IndexListView")
+#
+#        return render(request, "memories/new_photo.html", {"photo_form": PhotoForm()})

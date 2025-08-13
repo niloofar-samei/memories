@@ -2,10 +2,42 @@
 
 {% block content %}
 
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ photo_form.as_p }}
-      <button type="submit">Add new photo</button>
-    </form>
+<form action="{% url 'PhotoCreateView' %}" method="POST" enctype="multipart/form-data" class="w-full max-w-lg" style="margin-right: auto; margin-left: auto; padding: 20px">
+
+  <div class="flex flex-wrap">
+
+
+    <div style="width: 100%; margin-bottom: 20px;">
+      <div class="max-w-md mx-auto">
+        <label class="text-base text-slate-900 font-medium mb-3 block">Upload file</label>
+        <input type="file" name="photo"
+               class="w-full text-slate-500 font-medium text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100
+                      file:hover:bg-gray-200 file:text-slate-500 rounded" />
+      </div>
+    </div>
+
+
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">Short Caption:</label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none
+                    focus:bg-white focus:border-gray-500"
+             id="grid-first-name" name="caption" type="text" placeholder="The story of this photo is...">
+    </div>
+
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">Hashtags:</label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+             id="grid-last-name" name="hashtags" type="text" placeholder="#lifestyle #sport #travel">
+    </div>
+
+    <div style="margin-top: 20px; margin-left: 10px">
+      <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">Submit</button>
+    </div>
+
+
+  </div>
+
+</form>
+
 
 {% endblock %}
