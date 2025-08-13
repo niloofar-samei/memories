@@ -1,14 +1,9 @@
-<html>
-  <head></head>
-  <body>
+{% extends "memories/base.html" %}
 
-    <h1>hi</h1>
-
-    {{ photos }}
+{% block content %}
 
     {% for photo in photos %}
         {{ photo.sender }}
     {% endfor %}
 
-  </body>
-</html>
+{% endblock %}
