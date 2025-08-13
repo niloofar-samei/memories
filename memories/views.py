@@ -20,8 +20,9 @@ class PhotoCreateView(View):
         photo_form = PhotoForm(request.POST, request.FILES)
 
         if photo_form.is_valid():
-            photo_form.save()
-
-            return rediect("IndexListView")
+            p = photo_form.save(commit=False)
+            p.sender = "niloofar"
+            p.save()
+            return redirect("IndexListView")
 
         return render(request, "memories/new_photo.html", {"photo_form": PhotoForm()})
