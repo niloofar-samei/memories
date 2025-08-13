@@ -13,7 +13,7 @@
                       bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between
                       leading-normal">
             <div class="mb-8">
-              <p class="text-gray-700 text-base">story.</p>
+              <p class="text-gray-700 text-base">{{ each.caption }}</p>
             </div>
             <div class="flex items-center">
               <img class="w-10 h-10 rounded-full mr-4" src="/media/photos/member1.jpg">
@@ -23,12 +23,8 @@
               </div>
             </div>
             <div class="px-6 pt-4 pb-2">
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold
-                           text-gray-700 mr-2 mb-2">#photography</span>
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold
-                           text-gray-700 mr-2 mb-2">#travel</span>
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold
-                           text-gray-700 mr-2 mb-2">#winter</span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold
+                               text-gray-700 mr-2 mb-2">{{ each.hashtag_list }}</span>
             </div>
           </div>
         </div>

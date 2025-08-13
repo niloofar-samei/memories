@@ -15,14 +15,21 @@ class PhotoCreateView(View):
     def get(self, request):
         return render(request, "memories/new_photo.html")
 
+    def post(self, request):
+        if request.method == "POST":
+            try:
+                photo = request.FILES.get("photo")
+                caption = request.POST.get("caption")
+                hashtags = request.POST.get("hashtags")
+                new_photo = Photo.objects.create(
+                    photo=photo,
+                    caption=caption,
+                    hashtag_list=hashtags,
+                    sender="niloofar",
+                )
+                return redirect("IndexListView")
+            except Exception as e:
+                print("Error while saving:", e)
+                return redirect("IndexListView")
 
-#    def post(self, request):
-#        photo_form = PhotoForm(request.POST, request.FILES)
-#
-#        if photo_form.is_valid():
-#            p = photo_form.save(commit=False)
-#            p.sender = "niloofar"
-#            p.save()
-#            return redirect("IndexListView")
-#
-#        return render(request, "memories/new_photo.html", {"photo_form": PhotoForm()})
+        return render(request, "memories/new_photo.html")
