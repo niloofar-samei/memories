@@ -23,15 +23,15 @@ class PhotoCreateView(View):
             try:
                 photo = request.FILES.get("photo")
                 caption = request.POST.get("caption")
-                hashtag_text = request.POST.get("hashtags")
+                tags = request.POST.get("tags")
                 new_photo = Photo.objects.create(
                     photo=photo,
                     caption=caption,
                     sender="niloofar",
                 )
-                hashtag_names = [tag for tag in hashtag_text.split() if tag]
-                for name in hashtag_names:
-                    tag, created = Hashtag.objects.get_or_create(name=name)
+                tag_list = [tag for tag in tags.split() if tags]
+                for name in tag_list:
+                    tag, _ = Hashtag.objects.get_or_create(name=name)
                     new_photo.hashtags.add(tag)
 
                 return redirect("IndexListView")
