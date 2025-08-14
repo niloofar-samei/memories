@@ -17,6 +17,3 @@ class Photo(models.Model):
 
     def __str__(self):
         return self.sender
-
-    def get_queryset(self):
-        return Photo.objects.prefetch_related("hashtags")

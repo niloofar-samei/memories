@@ -10,6 +10,9 @@ class IndexListView(ListView):
     template_name = "memories/index.html"
     context_object_name = "photos"
 
+    def get_queryset(self):
+        return Photo.objects.prefetch_related("hashtags")
+
 
 class PhotoCreateView(View):
     def get(self, request):
