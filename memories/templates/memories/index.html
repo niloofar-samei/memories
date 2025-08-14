@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{{photos}}
+
     {% for each in photos %}
 
         <div class="max-w-sm w-full lg:max-w-full lg:flex">
@@ -23,7 +25,7 @@
               </div>
             </div>
             <div class="px-6 pt-4 pb-2">
-              {% for each tag in photo.hashtags.all %}
+              {% for tag in photo.hashtags.all %}
                   <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold
                                text-gray-700 mr-2 mb-2">{{ tag.name }}</span>
                   {% endfor %}
