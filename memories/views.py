@@ -29,7 +29,9 @@ class PhotoCreateView(View):
                     caption=caption,
                     sender="niloofar",
                 )
-                tag_list = [tag for tag in tags.split() if tags]
+                tag_list = [tag for tag in tags.split()[:3] if tags]
+                print(tag_list)
+                print(tags.split()[:3])
                 for name in tag_list:
                     tag, _ = Hashtag.objects.get_or_create(name=name)
                     new_photo.hashtags.add(tag)
