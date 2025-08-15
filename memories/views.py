@@ -16,7 +16,7 @@ class IndexListView(ListView):
 
 class PhotoCreateView(View):
     def get(self, request):
-        return render(request, "memories/new_photo.html")
+        return render(request, "memories/new_photo.html", {"page": "new"})
 
     def post(self, request):
         if request.method == "POST":
