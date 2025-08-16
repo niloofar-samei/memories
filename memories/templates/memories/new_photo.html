@@ -41,35 +41,4 @@
 
 </form>
 
-<div class="grid grid-cols-2 gap-4">
-
-  <div style="border: 1px solid blue; max-width: 500px">
-    <img id="blah">
-  </div>
-
-  <div id="button_div" style="display: none; margin-top: 10px; border: 1px solid yellow">
-    <div style="border: 1px solid red; text-align: center">
-
-      <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">Blur</button>
-      <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit">Crop</button>
-
-    </div>
-  </div>
-
-</div>
-
-
-<script>
-  const buttonDiv = document.getElementById("button_div");
-
-  imgInp.onchange = evt => {
-  const [file] = imgInp.files
-  if (file) {
-      blah.src = URL.createObjectURL(file);
-      buttonDiv.style.display = "block";
-  }
-}
-
-</script>
-
 {% endblock %}
