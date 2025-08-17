@@ -1,6 +1,8 @@
 {% extends "memories/base.html" %}
 
 {% block content %}
+{% load socialaccount %}
+<a href="{% provider_login_url 'google' %}">Login with Google</a>
 
 <div class="grid grid-cols-4 gap-4">
 

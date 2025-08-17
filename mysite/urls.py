@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("memories/", include("memories.urls")),
+    path("accounts/", include("allauth.urls")),
 ]
 
 # It's necessary to show images in media directory.
