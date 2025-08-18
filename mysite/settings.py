@@ -39,13 +39,16 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "memories",
+    "corsheaders",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
+    # "channels",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -154,7 +157,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-LOGIN_REDIRECT_URL = "/"  # redirect after login
+LOGIN_REDIRECT_URL = "/memories/"  # redirect after login
 LOGOUT_REDIRECT_URL = "/"  # redirect after logout
 
 # Django allauth config
@@ -162,3 +165,11 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+# Make sure session cookies work over HTTP (not HTTPS)
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+# Optional: ensure cookies are accessible via JavaScript (can be True/False)
+SESSION_COOKIE_HTTPONLY = True
+CSRF_COOKIE_HTTPONLY = True
