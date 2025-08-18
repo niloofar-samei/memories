@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Receiver</title>
+</head>
+<body>
+    <h1>Messages</h1>
+    <div id="messages"></div>
+
+<script>
+let url = `ws://${window.location.host}/ws/socket-server/`
+const chatSocket = new WebSocket(url)
+
+chatSocket.onopen = () => console.log("✅ Receiver connected")
+chatSocket.onerror = (err) => console.error(err)
+
+chatSocket.onmessage = (e) => {
+    console.log("📩 Receiver got:", e.data)
+    let data = JSON.parse(e.data)
+    if(data.type === 'chat'){
+        document.getElementById('messages').insertAdjacentHTML(
+            'beforeend', `<div><p>${data.message}</p></div>`
+        )
+    }
+}
+</script>
+
+
+</body>
+</html>

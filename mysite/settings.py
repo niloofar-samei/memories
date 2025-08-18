@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-    # "channels",
+    "channels",
 ]
 
 MIDDLEWARE = [
@@ -173,3 +173,13 @@ CSRF_COOKIE_SECURE = False
 # Optional: ensure cookies are accessible via JavaScript (can be True/False)
 SESSION_COOKIE_HTTPONLY = True
 CSRF_COOKIE_HTTPONLY = True
+
+
+ASGI_APPLICATION = "mysite.asgi.application"
+
+# Use Redis for Channels layer
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}

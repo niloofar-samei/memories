@@ -5,4 +5,6 @@ from memories.views import IndexListView, PhotoCreateView
 urlpatterns = [
     path("", IndexListView.as_view(), name="IndexListView"),
     path("new/", PhotoCreateView.as_view(), name="PhotoCreateView"),
+    path("sender/", views.sender_view, name="sender"),
+    path("receiver/", views.receiver_view, name="receiver"),
 ]

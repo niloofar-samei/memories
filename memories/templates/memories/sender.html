@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Sender</title>
+</head>
+<body>
+    <h1>Send a Message</h1>
+    <form id="form">
+        <input type="text" name="message" placeholder="Type message..."/>
+    </form>
+
+<script>
+let url = `ws://${window.location.host}/ws/socket-server/`
+const chatSocket = new WebSocket(url)
+
+chatSocket.onopen = () => console.log("✅ Sender connected")
+chatSocket.onerror = (err) => console.error(err)
+
+let form = document.getElementById('form')
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let message = e.target.message.value
+    console.log("✉️ Sending message:", message)
+    chatSocket.send(JSON.stringify({message}))
+    form.reset()
+})
+</script>
+
+
+
+</body>
+</html>

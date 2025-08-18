@@ -3,6 +3,9 @@ from .models import Photo, Hashtag
 from django.views.generic import ListView
 from django.shortcuts import render, redirect
 from django.views import View
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
+from django.http import JsonResponse
 
 
 class IndexListView(ListView):
@@ -36,10 +39,13 @@ class PhotoCreateView(View):
                     tag, _ = Hashtag.objects.get_or_create(name=name)
                     new_photo.hashtags.add(tag)
 
-                return redirect("IndexListView")
+            except:
+                return redirc("IndexListView")
 
-            except Exception as e:
-                print("Error while saving:", e)
-                return redirect("IndexListView")
 
-        return render(request, "memories/new_photo.html")
+def sender_view(request):
+    return render(request, "memories/sender.html")
+
+
+def receiver_view(request):
+    return render(request, "memories/receiver.html")
